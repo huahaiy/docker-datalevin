@@ -13,9 +13,9 @@ RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d
 RUN \
   echo "===> install Datalevin ..."  && \
   apt-get update && \
-  apt-get install -y supervisor && \
+  apt-get install -y supervisor unzip && \
   wget https://github.com/juji-io/datalevin/releases/download/0.5.14/dtlv-0.5.14-ubuntu-latest-amd64.zip && \
-  unzip dtlv-0.5.14-ubuntu-latest-amd64.zip && \
+  unzip dtlv-0.5.14-ubuntu-latest-amd64.zip -d /usr/bin/ && \
   rm dtlv*.zip &&  \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
