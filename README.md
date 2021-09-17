@@ -4,7 +4,7 @@ Docker image for Datalevin database.
 
 ## Run as a server
 
-Data will be stored under a volume called `/data` in the container, make sure that this volume is linked to the host when running the container if you want the data to be persistent, e.g. `-v /whatever/on/host:/data`. Also remember to expose the port. For example:
+Data will be stored under a volume called `/data` in the container, make sure that this volume is linked to the host when running the container if you want the data to be persistent, e.g. `-v /whatever/on/host:/data`. The server exposes port 8898, remember to link it to your host port if outside access is needed. For example:
 
 ```console
 docker run -p 8898:8898 -v /tmp/data:/data huahaiy/datalevin
