@@ -1,6 +1,6 @@
 # docker-datalevin
 
-Docker image for Datalevin database.
+Docker image for [Datalevin database](https://github.com/juji-io/datalevin).
 
 ## Run as a server
 
