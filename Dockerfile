@@ -22,7 +22,7 @@ RUN \
 
 COPY ./docker-entrypoint.sh /
 
-ENV DATALEVIN_ROOT /data
+ENV DATALEVIN_ROOT=/data DATALEVIN_PORT=8898
 
 VOLUME ["/data"]
 

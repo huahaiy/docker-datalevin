@@ -6,12 +6,12 @@ Docker image for [Datalevin database](https://github.com/juji-io/datalevin).
 
 Data will be stored under a volume called `/data` in the container, make sure that this volume is linked to the host when running the container if you want the data to be persistent, e.g. `-v /whatever/on/host:/data`. 
 
-By default, the server exposes port 8898. An environment variable `DATALEVIN_PORT` can be set to an alternative port. 
+By default, the server listen to port 8898. An environment variable `DATALEVIN_PORT` can be set to an alternative port. For example, 
 
 ```console
-docker run -p 8898:8898 -v /tmp/data:/data huahaiy/datalevin
+docker run --env DATALEVIN_PORT=8899 -p 8899:8899 -v /tmp/data:/data huahaiy/datalevin
 ```
-This will run the Datalevin server, with data in /tmp/data on your host, and listening to port 8898.
+This will run the Datalevin server, with data in /tmp/data on your host, and listening to port 8899.
 
 ## Run as a shell command
 
