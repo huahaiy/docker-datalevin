@@ -1,5 +1,5 @@
 #
-# Datalevin 
+# Datalevin
 #
 # Version     0.1
 #
@@ -14,8 +14,8 @@ RUN \
   echo "===> install Datalevin ..."  && \
   apt-get update && \
   apt-get install -y supervisor unzip && \
-  wget https://github.com/juji-io/datalevin/releases/download/0.5.23/dtlv-0.5.23-ubuntu-latest-amd64.zip && \
-  unzip dtlv-0.5.23-ubuntu-latest-amd64.zip -d /usr/bin/ && \
+  wget https://github.com/juji-io/datalevin/releases/download/0.5.25/dtlv-0.5.25-ubuntu-latest-amd64.zip && \
+  unzip dtlv-0.5.25-ubuntu-latest-amd64.zip -d /usr/bin/ && \
   rm dtlv*.zip &&  \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -26,7 +26,7 @@ ENV DATALEVIN_ROOT=/data DATALEVIN_PORT=8898
 
 VOLUME ["/data"]
 
-EXPOSE 8898 
+EXPOSE 8898
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
