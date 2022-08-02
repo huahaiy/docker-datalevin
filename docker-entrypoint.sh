@@ -10,7 +10,7 @@ nodaemon=true
 loglevel=info
 
 [program:datalevin]
-command=dtlv serv -v -r $DATALEVIN_ROOT -p $DATALEVIN_PORT
+command=java -jar /opt/datalevin.jar serv -v -r $DATALEVIN_ROOT -p $DATALEVIN_PORT
 stdout_logfile=/dev/stdout
 stdout_logfile_maxbytes=0
 redirect_stderr=true
