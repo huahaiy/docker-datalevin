@@ -1,6 +1,6 @@
 # docker-datalevin
 
-Docker image for [Datalevin database](https://github.com/juji-io/datalevin).
+Docker image for [Datalevin database](https://github.com/juji-io/datalevin). 
 
 ## Run as a server
 
@@ -12,6 +12,8 @@ By default, the server listen to port 8898. An environment variable `DATALEVIN_P
 docker run --env DATALEVIN_PORT=8899 -p 8899:8899 -v /tmp/data:/data huahaiy/datalevin
 ```
 This will run the Datalevin server, with data in /tmp/data on your host, and listening to port 8899.
+
+The server run JVM version of Datalevin as it is suitable for long running process.
 
 ## Run as a shell command
 
@@ -26,3 +28,5 @@ This will show Datalevin help screen.
 ```console
  docker run huahaiy/datalevin dtlv help
 ```
+
+Shell command run the GraalVM native version of Datalevin as it has fast startup.
