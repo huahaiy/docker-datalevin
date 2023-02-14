@@ -1,10 +1,10 @@
 #
 # Datalevin
 #
-# Version     0.3
+# Version     0.4
 #
 
-FROM eclipse-temurin:11.0.16_8-jre-focal
+FROM eclipse-temurin:17.0.6_10-jre-focal
 
 MAINTAINER Huahai Yang <hyang@juji-inc.com>
 
@@ -14,10 +14,10 @@ RUN \
   echo "===> install Datalevin ..."  && \
   apt-get update && \
   apt-get install -y supervisor unzip wget && \
-  wget https://github.com/juji-io/datalevin/releases/download/0.8.4/dtlv-0.8.4-ubuntu-latest-amd64.zip && \
-  unzip dtlv-0.8.4-ubuntu-latest-amd64.zip -d /usr/bin/ && \
+  wget https://github.com/juji-io/datalevin/releases/download/0.8.5/dtlv-0.8.5-ubuntu-latest-amd64.zip && \
+  unzip dtlv-0.8.5-ubuntu-latest-amd64.zip -d /usr/bin/ && \
   rm dtlv*.zip &&  \
-  wget -O /opt/datalevin.jar https://github.com/juji-io/datalevin/releases/download/0.8.4/datalevin-0.8.4-standalone.jar && \
+  wget -O /opt/datalevin.jar https://github.com/juji-io/datalevin/releases/download/0.8.5/datalevin-0.8.5-standalone.jar && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
