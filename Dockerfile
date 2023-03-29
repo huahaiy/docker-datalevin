@@ -14,10 +14,10 @@ RUN \
   echo "===> install Datalevin ..."  && \
   apt-get update && \
   apt-get install -y supervisor unzip wget && \
-  wget https://github.com/juji-io/datalevin/releases/download/0.8.8/dtlv-0.8.8-ubuntu-latest-amd64.zip && \
-  unzip dtlv-0.8.8-ubuntu-latest-amd64.zip -d /usr/bin/ && \
+  wget https://github.com/juji-io/datalevin/releases/download/0.8.9/dtlv-0.8.9-ubuntu-latest-amd64.zip && \
+  unzip dtlv-0.8.9-ubuntu-latest-amd64.zip -d /usr/bin/ && \
   rm dtlv*.zip &&  \
-  wget -O /opt/datalevin.jar https://github.com/juji-io/datalevin/releases/download/0.8.8/datalevin-0.8.8-standalone.jar && \
+  wget -O /opt/datalevin.jar https://github.com/juji-io/datalevin/releases/download/0.8.9/datalevin-0.8.9-standalone.jar && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
