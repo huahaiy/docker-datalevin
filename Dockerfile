@@ -1,10 +1,10 @@
 #
 # Datalevin
 #
-# Version     0.4
+# Version     0.5
 #
 
-FROM eclipse-temurin:17.0.6_10-jre-focal
+FROM eclipse-temurin:21-jre-jammy
 
 MAINTAINER Huahai Yang <hyang@juji-inc.com>
 
