@@ -13,7 +13,7 @@ RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d
 RUN \
   echo "===> install Datalevin ..."  && \
   apt-get update && \
-  apt-get install -y supervisor unzip wget && \
+  apt-get install -y supervisor unzip wget libomp-dev && \
   wget https://github.com/juji-io/datalevin/releases/download/0.9.22/dtlv-0.9.22-ubuntu-22.04-amd64.zip && \
   unzip dtlv-0.9.22-ubuntu-22.04-amd64.zip -d /usr/bin/ && \
   rm dtlv*.zip &&  \
