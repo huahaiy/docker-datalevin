@@ -6,7 +6,7 @@
 
 FROM eclipse-temurin:21-jre-jammy
 
-MAINTAINER Huahai Yang <huahai.yang@gmail.com>
+LABEL maintainer="Huahai Yang <huahai.yang@gmail.com>"
 
 RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d
 
