@@ -14,10 +14,10 @@ RUN \
   echo "===> install Datalevin ..."  && \
   apt-get update && \
   apt-get install -y supervisor unzip wget libgomp1 && \
-  wget https://github.com/datalevin/datalevin/releases/download/0.10.4/dtlv-0.10.4-ubuntu-22.04-amd64.zip && \
-  unzip dtlv-0.10.4-ubuntu-22.04-amd64.zip -d /usr/bin/ && \
+  wget https://github.com/datalevin/datalevin/releases/download/0.10.5/dtlv-0.10.5-ubuntu-22.04-amd64.zip && \
+  unzip dtlv-0.10.5-ubuntu-22.04-amd64.zip -d /usr/bin/ && \
   rm dtlv*.zip &&  \
-  wget -O /opt/datalevin.jar https://github.com/datalevin/datalevin/releases/download/0.10.4/datalevin-0.10.4-standalone.jar && \
+  wget -O /opt/datalevin.jar https://github.com/datalevin/datalevin/releases/download/0.10.5/datalevin-0.10.5-standalone.jar && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
