@@ -30,3 +30,17 @@ This will show Datalevin help screen.
 ```
 
 Shell command runs the GraalVM native image version of Datalevin as it has fast startup.
+
+## Building and publishing docker
+
+To build the docker image
+
+```console
+docker build --platform=linux/amd64 -t huahaiy/datalevin:<version> .
+```
+
+And to publish
+
+```console
+docker push huahaiy/datalevin:<version>
+```
