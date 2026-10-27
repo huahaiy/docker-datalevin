@@ -4,7 +4,7 @@ ARG JAVA_IMAGE=eclipse-temurin:21-jre-noble
 FROM ${JAVA_IMAGE}
 
 ARG TARGETARCH
-ARG DATALEVIN_VERSION=1.2.8
+ARG DATALEVIN_VERSION=1.2.9
 
 LABEL maintainer="Huahai Yang <huahai.yang@gmail.com>" \
       org.opencontainers.image.title="Datalevin" \
