@@ -1,6 +1,11 @@
 # syntax=docker/dockerfile:1.7
 
-ARG JAVA_IMAGE=eclipse-temurin:21-jre-noble
+ARG TARGETARCH
+ARG JAVA_IMAGE=java-${TARGETARCH}
+
+# Match the distribution used to build each architecture's native executable.
+FROM eclipse-temurin:21-jre-jammy AS java-amd64
+FROM eclipse-temurin:21-jre-noble AS java-arm64
 FROM ${JAVA_IMAGE}
 
 ARG TARGETARCH

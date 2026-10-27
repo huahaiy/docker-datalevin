@@ -33,10 +33,22 @@ Shell command runs the GraalVM native image version of Datalevin as it has fast 
 
 ## Building and publishing docker
 
-To build the docker image
+The default Java 21 runtime matches each native release binary:
+
+| Platform | Runtime image | Ubuntu release |
+| --- | --- | --- |
+| `linux/amd64` | `eclipse-temurin:21-jre-jammy` | 22.04 |
+| `linux/arm64` | `eclipse-temurin:21-jre-noble` | 24.04 |
+
+The `ubuntu-22.04` part of an asset filename does not select the container's
+base image; the Dockerfile selects it from the target architecture. An explicit
+`JAVA_IMAGE` build argument overrides that selection and must be compatible
+with the corresponding native binary.
+
+To build the docker image (the Dockerfile defaults to Datalevin 1.2.9):
 
 ```console
-docker build --platform=linux/amd64 -t huahaiy/datalevin:<version> .
+docker build --pull --platform=linux/amd64 --build-arg DATALEVIN_VERSION=<version> -t huahaiy/datalevin:<version> .
 ```
 
 And to publish
