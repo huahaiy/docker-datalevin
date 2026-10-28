@@ -31,7 +31,10 @@ This will show Datalevin help screen.
 
 Shell command runs the GraalVM native image version of Datalevin as it has fast startup.
 
-## Building and publishing docker
+## Building and publishing multi-platform images
+
+The image supports `linux/amd64` and `linux/arm64` under a single tag. Docker
+automatically selects the matching architecture when pulling the image.
 
 The default Java 21 runtime matches each native release binary:
 
@@ -45,14 +48,49 @@ base image; the Dockerfile selects it from the target architecture. An explicit
 `JAVA_IMAGE` build argument overrides that selection and must be compatible
 with the corresponding native binary.
 
-To build the docker image (the Dockerfile defaults to Datalevin 1.2.9):
+Use [Docker Buildx](https://docs.docker.com/build/building/multi-platform/) to
+build both platforms and publish them together. Create a builder once:
 
 ```console
-docker build --pull --platform=linux/amd64 --build-arg DATALEVIN_VERSION=<version> -t huahaiy/datalevin:<version> .
+docker buildx create --name datalevin-builder --driver docker-container --bootstrap
 ```
 
-And to publish
+Docker Desktop includes support for emulating the other architecture. On a
+standalone Linux host, the builder needs emulation support or native nodes for
+both platforms; see the Docker Buildx documentation linked above.
+
+Log in to Docker Hub, then build and push a version (the Dockerfile defaults to
+Datalevin 1.2.10):
 
 ```console
-docker push huahaiy/datalevin:<version>
+docker login
+docker buildx build --builder datalevin-builder --pull \
+  --platform linux/amd64,linux/arm64 \
+  --build-arg DATALEVIN_VERSION=1.2.10 \
+  --tag huahaiy/datalevin:1.2.10 \
+  --push .
 ```
+
+To also update `latest`, add `--tag huahaiy/datalevin:latest` to the build command.
+The `--push` option publishes both images and their shared manifest in one step.
+Verify the published platforms with:
+
+```console
+docker buildx imagetools inspect huahaiy/datalevin:1.2.10
+```
+
+For a local multi-platform build with Docker's containerd image store enabled,
+use the default builder and load both platforms without publishing:
+
+```console
+docker buildx build --builder default --pull \
+  --platform linux/amd64,linux/arm64 \
+  --build-arg DATALEVIN_VERSION=1.2.10 \
+  --tag huahaiy/datalevin:1.2.10 \
+  --load .
+docker run --rm --platform linux/amd64 huahaiy/datalevin:1.2.10 dtlv help
+docker run --rm --platform linux/arm64 huahaiy/datalevin:1.2.10 dtlv help
+```
+
+With Docker's classic image store, use the `datalevin-builder` builder with a
+single `--platform` and `--load` to test each architecture locally.
